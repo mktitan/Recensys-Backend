@@ -1,6 +1,5 @@
 using Microsoft.Practices.Unity;
 using System.Web.Http;
-using ReviewIT_Backend.Repository;
 using Unity.WebApi;
 
 namespace ReviewIT_Backend

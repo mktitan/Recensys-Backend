@@ -4,11 +4,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ReviewIT_Backend.BusinessLogicLayer;
-using ReviewIT_Backend.Models;
-using ReviewIT_Backend.Models.OverviewModels;
-using ReviewIT_Backend.Repository;
-using ReviewIT_Backend.Repository.Factory;
+using RecensysBLL.BusinessLogicLayer;
+using RecensysBLL.Models;
+using RecensysBLL.Models.OverviewModels;
+using RecensysRepository.Factory;
 
 namespace ReviewIT_Backend.Controllers
 {

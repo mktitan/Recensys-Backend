@@ -48,6 +48,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -64,14 +65,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ModelTest.cs" />
     <Compile Include="StudyBLLTest.cs" />
     <Compile Include="UserBLLTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ReviewIT-Backend\ReviewIT-Backend.csproj">
+    <ProjectReference Include="..\ReviewIT-Backend\RecensysWebAPI2.csproj">
       <Project>{a2f7e4ac-7116-4be7-ae7a-1d50ab5b54f6}</Project>
-      <Name>ReviewIT-Backend</Name>
+      <Name>RecensysWebAPI2</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

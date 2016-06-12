@@ -5,11 +5,9 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Newtonsoft.Json;
-using ReviewIT_Backend.BusinessLogicLayer;
-using ReviewIT_Backend.Models;
-using ReviewIT_Backend.Repository;
-using ReviewIT_Backend.Repository.DTO;
-using ReviewIT_Backend.Repository.Factory;
+using RecensysBLL.BusinessLogicLayer;
+using RecensysBLL.Models;
+using RecensysRepository.Factory;
 
 namespace ReviewIT_Backend.Controllers
 {
@@ -54,5 +52,6 @@ namespace ReviewIT_Backend.Controllers
         {
             
         }
+
     }
 }

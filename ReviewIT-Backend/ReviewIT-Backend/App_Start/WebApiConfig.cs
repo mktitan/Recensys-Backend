@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Web.Http;
-using ReviewIT_Backend.Repository;
 
 namespace ReviewIT_Backend
 {
