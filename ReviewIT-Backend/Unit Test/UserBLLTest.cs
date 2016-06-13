@@ -1,12 +1,10 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using ReviewIT_Backend.BusinessLogicLayer;
-using ReviewIT_Backend.Models;
-using ReviewIT_Backend.Repository.DTO;
-using ReviewIT_Backend.Repository.Factory;
+using RecensysBLL.BusinessLogicLayer;
+using RecensysBLL.Models;
+using RecensysRepository.DTO;
+using RecensysRepository.Factory;
 
 namespace Unit_Test
 {
@@ -48,7 +46,7 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new UserBLL(repo);
-            var model = new UserModel()
+            var model = new UserModel
             {
                 Id = -1
             };
@@ -63,9 +61,11 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new UserBLL(repo);
-            repo.GetUserRepo().Create(new UserDTO()
+            repo.GetUserRepo().Create(new UserDTO
             {
-                U_Id = 10, FirstName = "Mathias", LastName = "Pedersen"
+                U_Id = 10,
+                FirstName = "Mathias",
+                LastName = "Pedersen"
             });
 
             // Act
@@ -84,10 +84,9 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new UserBLL(repo);
-            
+
             // Act
             var model = bll.Get(10);
-            
         }
 
         [TestMethod]
@@ -98,13 +97,13 @@ namespace Unit_Test
             var bll = new UserBLL(repo);
 
             // Act
-            bll.AssociateUserToStudy(10,15,StudyRole.Guest);
+            bll.AssociateUserToStudy(10, 15, StudyRole.Guest);
 
             // Assert
             var storedDto = repo.GetUserStudyRelationRepository().Read(10, 15);
             Assert.AreEqual(storedDto.U_Id, 10);
             Assert.AreEqual(storedDto.S_Id, 15);
-            Assert.AreEqual(storedDto.R_Id, (int)StudyRole.Guest);
+            Assert.AreEqual(storedDto.R_Id, (int) StudyRole.Guest);
         }
 
         [TestMethod]
@@ -113,7 +112,7 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new UserBLL(repo);
-            repo.GetUserStudyRelationRepository().Create(new UserStudyRelationDTO()
+            repo.GetUserStudyRelationRepository().Create(new UserStudyRelationDTO
             {
                 S_Id = 15,
                 R_Id = 2,
@@ -125,7 +124,7 @@ namespace Unit_Test
             bll.UnassociateUserToStudy(10, 15);
 
             // Assert
-            Assert.AreEqual(count-1, repo.GetUserStudyRelationRepository().GetAll().Count());
+            Assert.AreEqual(count - 1, repo.GetUserStudyRelationRepository().GetAll().Count());
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace RecensysBLL.Models
+﻿using Microsoft.Build.Framework;
+
+namespace RecensysBLL.Models
 {
     public class UserModel
     {

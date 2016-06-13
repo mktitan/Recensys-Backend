@@ -71,6 +71,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RecensysBLL\RecensysBLL.csproj">
+      <Project>{af8d8e7f-aca8-4c4b-a3bc-4dfd583c86d9}</Project>
+      <Name>RecensysBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RecensysRepository\RecensysRepository.csproj">
+      <Project>{3c0aaa0a-8398-4c54-bc77-57558c78e4bd}</Project>
+      <Name>RecensysRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ReviewIT-Backend\RecensysWebAPI2.csproj">
       <Project>{a2f7e4ac-7116-4be7-ae7a-1d50ab5b54f6}</Project>
       <Name>RecensysWebAPI2</Name>

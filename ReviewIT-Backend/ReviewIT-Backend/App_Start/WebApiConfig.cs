@@ -12,6 +12,7 @@ namespace ReviewIT_Backend
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            // Return results in json formatting
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
 
@@ -20,6 +21,12 @@ namespace ReviewIT_Backend
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "OneLevelNested",
+                routeTemplate: "api/{controller}/{customerId}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

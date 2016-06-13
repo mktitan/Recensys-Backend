@@ -19,7 +19,7 @@ namespace ReviewIT_Backend.Controllers
         // GET: api/Stage
         public IEnumerable<StageOverviewModel> Get()
         {
-            return _bll.Get();
+            return null;
         }
 
         // GET: api/Stage/5

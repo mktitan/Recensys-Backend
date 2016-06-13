@@ -14,7 +14,7 @@ namespace RecensysRepository
 
         public UserRepositoryDb()
         {
-            _conStr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            //_conStr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
         }
 
         public IEnumerable<UserDTO> GetAll()
@@ -31,11 +31,11 @@ namespace RecensysRepository
         public UserDTO Read(int id)
         {
 
-            UserDTO m;
+            UserDTO m = null;
 
             using (IDbConnection c = new SqlConnection(_conStr))
             {
-                m = c.Query<UserDTO>("SELECT * FROM dbo.Users WHERE U_Id = @uid", new {uid = id}).SingleOrDefault();
+                //m = c.Query<UserDTO>("SELECT * FROM dbo.Users WHERE U_Id = @uid", new {uid = id}).SingleOrDefault();
             }
 
             return m;

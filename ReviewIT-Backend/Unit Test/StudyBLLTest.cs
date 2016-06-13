@@ -1,10 +1,9 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ReviewIT_Backend.BusinessLogicLayer;
-using ReviewIT_Backend.Models.OverviewModels;
-using ReviewIT_Backend.Repository.DTO;
-using ReviewIT_Backend.Repository.Factory;
+using RecensysBLL.BusinessLogicLayer;
+using RecensysBLL.Models.OverviewModels;
+using RecensysRepository.DTO;
+using RecensysRepository.Factory;
 
 namespace Unit_Test
 {
@@ -17,7 +16,7 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new StudyBLL(repo);
-            var model = new StudyOverviewModel()
+            var model = new StudyOverviewModel
             {
                 Id = 10,
                 Name = "name",
@@ -29,7 +28,7 @@ namespace Unit_Test
             bll.AddNew(model);
 
             // Assert
-            Assert.AreEqual(count+1, repo.GetStudyRepo().GetAll().Count());
+            Assert.AreEqual(count + 1, repo.GetStudyRepo().GetAll().Count());
         }
 
         [TestMethod]
@@ -38,7 +37,7 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new StudyBLL(repo);
-            var model = new StudyOverviewModel()
+            var model = new StudyOverviewModel
             {
                 Id = 10,
                 Name = "name",
@@ -59,14 +58,14 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new StudyBLL(repo);
-            repo.GetStudyRepo().Create(new StudyDTO()
+            repo.GetStudyRepo().Create(new StudyDTO
             {
                 S_Id = 10,
                 Name = "name",
                 Description = "desc"
             });
-            
-            
+
+
             // Act
             var model = bll.Get(10);
 
@@ -82,24 +81,24 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new StudyBLL(repo);
-            repo.GetStudyRepo().Create(new StudyDTO()
+            repo.GetStudyRepo().Create(new StudyDTO
             {
                 S_Id = 10,
                 Name = "name",
                 Description = "desc"
             });
             var bcount = repo.GetStageRepo().GetAll().Count(d => d.Study_Id == 10);
-            repo.GetStageRepo().Create(new StageDTO()
+            repo.GetStageRepo().Create(new StageDTO
             {
                 Study_Id = 10,
                 Name = "Stage1",
-                S_Id = 15,
+                S_Id = 15
             });
-            repo.GetStageRepo().Create(new StageDTO()
+            repo.GetStageRepo().Create(new StageDTO
             {
                 Study_Id = 10,
                 Name = "Stage2",
-                S_Id = 16,
+                S_Id = 16
             });
 
 
@@ -108,7 +107,7 @@ namespace Unit_Test
 
             // Assert
             var stage = model.Stages.Find(s => s.Id == 15);
-            Assert.AreEqual(bcount+2, model.Stages.Count);
+            Assert.AreEqual(bcount + 2, model.Stages.Count);
             Assert.IsNotNull(stage);
             Assert.AreEqual("Stage1", stage.Name);
         }
@@ -119,7 +118,7 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new StudyBLL(repo);
-            repo.GetStudyRepo().Create(new StudyDTO()
+            repo.GetStudyRepo().Create(new StudyDTO
             {
                 S_Id = 13
             });
@@ -129,7 +128,7 @@ namespace Unit_Test
             bll.Remove(13);
 
             // Assert
-            Assert.AreEqual(count-1, repo.GetStudyRepo().GetAll().Count());
+            Assert.AreEqual(count - 1, repo.GetStudyRepo().GetAll().Count());
         }
 
         [TestMethod]
