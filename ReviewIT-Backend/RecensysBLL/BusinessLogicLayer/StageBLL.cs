@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RecensysBLL.Models;
+using RecensysBLL.Models.FullModels;
 using RecensysBLL.Models.OverviewModels;
 using RecensysRepository.Factory;
 

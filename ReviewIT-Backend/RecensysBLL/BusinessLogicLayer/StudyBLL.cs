@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RecensysBLL.Models;
+using RecensysBLL.Models.FullModels;
 using RecensysBLL.Models.OverviewModels;
 using RecensysRepository.DTO;
 using RecensysRepository.Factory;
@@ -51,50 +52,42 @@ namespace RecensysBLL.BusinessLogicLayer
 
         public StudyModel Get(int id)
         {
-            
             using (var srepo = _factory.GetStudyRepo())
-            using (var urepo = _factory.GetUserRepo())
-            using (var arepo = _factory.GetArticleRepo())
             using (var strepo = _factory.GetStageRepo())
+            using (var usrepo = _factory.GetUserStudyRelationRepository())
             {
-                var sdto = srepo.Read(id);
-                var adtos = arepo.GetAll().Where(dto => dto.S_Id == id).Take(10);
-                var stdtos = strepo.GetAll().Where(dto => dto.Study_Id == id);
+                var study = new StudyModel();
 
-                // build roles dictionary for studyOverview
-                
+                // Get Study
+                var studyDto = srepo.Read(id);
 
-                // build articles
-                var articles = new List<ArticleModel>();
-                foreach (var adto in adtos)
+                // Get stages
+                var stageDtos = strepo.GetAll().Where(dto => dto.Study_Id == id);
+
+                // Get Persons
+                var personDtos = usrepo.GetAll().Where(us => us.S_Id == id);
+                var userStudyRoleDictionary = new Dictionary<int, List<StudyRole>>();
+                foreach (var dto in personDtos)
                 {
-                    articles.Add(new ArticleModel()
+                    if (userStudyRoleDictionary.ContainsKey(dto.U_Id))
                     {
-                        Id = adto.A_Id,
-                        Name = adto.Title
-                    });
+                        userStudyRoleDictionary[id].Add((StudyRole)dto.R_Id);
+                    }
+                    else
+                    {
+                        userStudyRoleDictionary.Add(dto.U_Id, new List<StudyRole>() {(StudyRole)dto.R_Id});
+                    }
+                }
+                study.Persons = new Dictionary<UserModel, List<StudyRole>>();
+                foreach (var VARIABLE in userStudyRoleDictionary)
+                {
+                    // TODO move data from id indexed dictionary to userModel indexed or
+                    // find better solution
                 }
 
-                // build stages
-                var stages = new List<StageOverviewModel>();
-                foreach (var stdto in stdtos)
-                {
-                    stages.Add(new StageOverviewModel()
-                    {
-                        Id = stdto.S_Id,
-                        Name = stdto.Name
-                    });
-                }
-
-                return new StudyModel()
-                {
-                    Id = sdto.S_Id,
-                    Name = sdto.Name,
-                    Description = sdto.Description,
-                    Articles = articles,
-                    Stages = stages
-                };
+                return study;
             }
+            
         }
 
         public void Remove(int id)

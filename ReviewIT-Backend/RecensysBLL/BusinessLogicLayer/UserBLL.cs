@@ -1,5 +1,6 @@
 ﻿using System;
 using RecensysBLL.Models;
+using RecensysBLL.Models.FullModels;
 using RecensysRepository.DTO;
 using RecensysRepository.Factory;
 

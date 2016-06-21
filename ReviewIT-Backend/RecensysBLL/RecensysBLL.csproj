@@ -39,17 +39,15 @@
     <Compile Include="BusinessLogicLayer\StudyBLL.cs" />
     <Compile Include="BusinessLogicLayer\TaskBLL.cs" />
     <Compile Include="BusinessLogicLayer\UserBLL.cs" />
-    <Compile Include="Models\ArticleModel.cs" />
-    <Compile Include="Models\FieldDataModel.cs" />
-    <Compile Include="Models\FieldModel.cs" />
+    <Compile Include="Models\FullModels\DataModel.cs" />
     <Compile Include="Models\OverviewModels\ArticleOverviewModel.cs" />
     <Compile Include="Models\OverviewModels\StageOverviewModel.cs" />
     <Compile Include="Models\OverviewModels\StudyOverviewModel.cs" />
-    <Compile Include="Models\StageModel.cs" />
-    <Compile Include="Models\StrategyModel.cs" />
-    <Compile Include="Models\StudyModel.cs" />
-    <Compile Include="Models\TaskModel.cs" />
-    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\FullModels\StageModel.cs" />
+    <Compile Include="Models\FullModels\StrategyModel.cs" />
+    <Compile Include="Models\FullModels\StudyModel.cs" />
+    <Compile Include="Models\FullModels\TaskModel.cs" />
+    <Compile Include="Models\FullModels\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

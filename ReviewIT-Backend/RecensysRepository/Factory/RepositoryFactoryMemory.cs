@@ -6,17 +6,17 @@ namespace RecensysRepository.Factory
     public class RepositoryFactoryMemory : IRepositoryFactory
     {
 
-        private static UserRepositoryIm _userRepository;
-        private static StudyRepositoryIm _studyRepository;
-        private static StageRepositoryIm _stageRepository;
-        private static FieldRepositoryIm _fieldRepository;
-        private static FieldDataRepositoryIm _fieldDataRepository;
-        private static TaskRepositoryIm _taskRepository;
-        private static ArticleRepositoryIm _articleRepository;
-        private static CredentialsRepositoryIm _credentialsRepository;
-        private static UserStudyRelationRepositoryIm _userStudyRelationRepository;
-        private static StudyRoleRepositoryIm _studyRoleRepository;
-        private static StrategyRepositoryIm _strategyRepository;
+        private UserRepositoryIm _userRepository;
+        private StudyRepositoryIm _studyRepository;
+        private StageRepositoryIm _stageRepository;
+        private FieldRepositoryIm _fieldRepository;
+        private FieldDataRepositoryIm _fieldDataRepository;
+        private TaskRepositoryIm _taskRepository;
+        private ArticleRepositoryIm _articleRepository;
+        private CredentialsRepositoryIm _credentialsRepository;
+        private UserStudyRelationRepositoryIm _userStudyRelationRepository;
+        private StudyRoleRepositoryIm _studyRoleRepository;
+        private StrategyRepositoryIm _strategyRepository;
 
         public IUserRepository GetUserRepo()
         {

@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RecensysBLL.BusinessLogicLayer;
 using RecensysBLL.Models;
+using RecensysBLL.Models.FullModels;
 using RecensysRepository.DTO;
 using RecensysRepository.Factory;
 
@@ -95,6 +96,7 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new UserBLL(repo);
+            repo.GetUserRepo().Create(new UserDTO() {});
 
             // Act
             bll.AssociateUserToStudy(10, 15, StudyRole.Guest);
@@ -104,6 +106,17 @@ namespace Unit_Test
             Assert.AreEqual(storedDto.U_Id, 10);
             Assert.AreEqual(storedDto.S_Id, 15);
             Assert.AreEqual(storedDto.R_Id, (int) StudyRole.Guest);
+        }
+
+        [TestMethod]
+        public void AssociateUserTostudy_NonexistentIds_ThrowArgumentOutOfBoundsException()
+        {
+            // Arrange
+            var repo = new RepositoryFactoryMemory();
+            var bll = new UserBLL(repo);
+
+            // Act
+            bll.AssociateUserToStudy(10, 15, StudyRole.Guest);
         }
 
         [TestMethod]
@@ -126,5 +139,7 @@ namespace Unit_Test
             // Assert
             Assert.AreEqual(count - 1, repo.GetUserStudyRelationRepository().GetAll().Count());
         }
+
+        
     }
 }

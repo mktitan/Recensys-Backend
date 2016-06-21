@@ -29,10 +29,7 @@ namespace RecensysWebAPI5.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int studyId, int id)
-        {
-            return "stage with id: " + id + " from study with id: " + studyId;
-        }
+        public string Get(int studyId, int id) => $"(stage with id {id} in study with id {studyId})";
 
         // POST api/values
         [HttpPost]

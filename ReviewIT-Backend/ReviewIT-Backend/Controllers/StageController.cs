@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using RecensysBLL.BusinessLogicLayer;
 using RecensysBLL.Models;
+using RecensysBLL.Models.FullModels;
 using RecensysBLL.Models.OverviewModels;
 using RecensysRepository.Factory;
 

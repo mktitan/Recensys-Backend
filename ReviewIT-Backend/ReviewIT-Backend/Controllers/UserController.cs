@@ -7,6 +7,7 @@ using System.Web.Http;
 using Newtonsoft.Json;
 using RecensysBLL.BusinessLogicLayer;
 using RecensysBLL.Models;
+using RecensysBLL.Models.FullModels;
 using RecensysRepository.Factory;
 
 namespace ReviewIT_Backend.Controllers

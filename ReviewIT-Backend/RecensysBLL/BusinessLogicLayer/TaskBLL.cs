@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RecensysBLL.Models;
+using RecensysBLL.Models.FullModels;
 using RecensysRepository.DTO;
 using RecensysRepository.Factory;
 
@@ -27,13 +28,13 @@ namespace RecensysBLL.BusinessLogicLayer
                 var tasks = taskRepo.GetAll().Where(dto => dto.U_Id == userId && dto.S_Id == stageId);
                 foreach (var task in tasks)
                 {
-                    var fields = new Dictionary<FieldModel, List<FieldDataModel>>();
+                    var fields = new Dictionary<FieldModel, List<DataModel>>();
 
                     var fieldData = fieldDataRepo.GetAll().Where(dto => dto.Task_Id == task.T_Id);
                     foreach (var data in fieldData)
                     {
                         var field = fieldRepo.Read(data.Field_Id);
-                        fields[new FieldModel() {Id = field.F_Id, FieldType = (FieldType)field.FieldType}].Add(new FieldDataModel() {Id = data.F_Id, ArticleId = data.Article_Id, Data = data.Data});
+                        fields[new FieldModel() {Id = field.F_Id, FieldType = (FieldType)field.FieldType}].Add(new DataModel() {Id = data.F_Id, ArticleId = data.Article_Id, Data = data.Data});
                         taskModels.Add(new TaskModel() {Id = task.T_Id, Fields = fields});
                     }
                 }
