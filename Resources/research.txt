@@ -1,5 +1,0 @@
-tools:
-slrtool.org
-
-info:
-http://handbook.cochrane.org/
