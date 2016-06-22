@@ -1,6 +1,6 @@
-﻿namespace RecensysRepository.DTO
+﻿namespace RecensysRepository.Entities
 {
-    public class StrategyEntity
+    public class StudyEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

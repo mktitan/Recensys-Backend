@@ -1,4 +1,4 @@
-﻿namespace RecensysRepository.DTO
+﻿namespace RecensysRepository.Entities
 {
     public class ArticleEntity
     {
