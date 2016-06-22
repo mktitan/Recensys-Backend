@@ -6,13 +6,13 @@ namespace RecensysRepository.Interfaces
 {
     public interface ICredentialsRepository : IDisposable
     {
-        IEnumerable<CredentialsDTO> GetAll();
+        IEnumerable<CredentialsEntity> GetAll();
 
-        void Create(CredentialsDTO item);
+        void Create(CredentialsEntity item);
 
-        CredentialsDTO Read(int id);
+        CredentialsEntity Read(int id);
 
-        void Update(CredentialsDTO item);
+        void Update(CredentialsEntity item);
 
         void Delete(int id);
     }

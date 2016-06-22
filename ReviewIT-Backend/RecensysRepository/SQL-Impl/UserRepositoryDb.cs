@@ -17,31 +17,31 @@ namespace RecensysRepository
             //_conStr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
         }
 
-        public IEnumerable<UserDTO> GetAll()
+        public IEnumerable<UserEntity> GetAll()
         {
 
             return null;
         }
 
-        public void Create(UserDTO user)
+        public void Create(UserEntity user)
         {
             throw new NotImplementedException();
         }
 
-        public UserDTO Read(int id)
+        public UserEntity Read(int id)
         {
 
-            UserDTO m = null;
+            UserEntity m = null;
 
             using (IDbConnection c = new SqlConnection(_conStr))
             {
-                //m = c.Query<UserDTO>("SELECT * FROM dbo.Users WHERE U_Id = @uid", new {uid = id}).SingleOrDefault();
+                //m = c.Query<UserDTO>("SELECT * FROM dbo.Users WHERE Id = @uid", new {uid = id}).SingleOrDefault();
             }
 
             return m;
         }
 
-        public void Update(UserDTO user)
+        public void Update(UserEntity user)
         {
             throw new NotImplementedException();
         }

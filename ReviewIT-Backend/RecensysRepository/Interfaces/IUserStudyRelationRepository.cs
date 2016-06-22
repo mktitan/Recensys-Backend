@@ -6,13 +6,13 @@ namespace RecensysRepository.Interfaces
 {
     public interface IUserStudyRelationRepository : IDisposable
     {
-        IEnumerable<UserStudyRelationDTO> GetAll();
+        IEnumerable<UserStudyRelationEntity> GetAll();
 
-        void Create(UserStudyRelationDTO item);
+        void Create(UserStudyRelationEntity item);
 
-        UserStudyRelationDTO Read(int uid, int sid);
+        UserStudyRelationEntity Read(int uid, int sid);
 
-        void Update(UserStudyRelationDTO item);
+        void Update(UserStudyRelationEntity item);
 
         void Delete(int uid, int sid);
     }

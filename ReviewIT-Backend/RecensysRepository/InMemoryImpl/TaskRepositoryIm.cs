@@ -7,36 +7,36 @@ namespace RecensysRepository.InMemoryImpl
     public class TaskRepositoryIm : ITaskRepository
     {
 
-        private List<TaskDTO> _tasks = new List<TaskDTO>();
+        private List<TaskEntity> _tasks = new List<TaskEntity>();
 
         public void Dispose()
         {
         }
 
-        public IEnumerable<TaskDTO> GetAll()
+        public IEnumerable<TaskEntity> GetAll()
         {
             return _tasks;
         }
 
-        public void Create(TaskDTO item)
+        public void Create(TaskEntity item)
         {
             _tasks.Add(item);
         }
 
-        public TaskDTO Read(int id)
+        public TaskEntity Read(int id)
         {
-            return _tasks.Find(dto => dto.T_Id == id);
+            return _tasks.Find(dto => dto.Id == id);
         }
 
-        public void Update(TaskDTO item)
+        public void Update(TaskEntity item)
         {
-            _tasks.RemoveAll(dto => dto.T_Id == item.T_Id);
+            _tasks.RemoveAll(dto => dto.Id == item.Id);
             _tasks.Add(item);
         }
 
         public void Delete(int id)
         {
-            _tasks.RemoveAll(dto => dto.T_Id == id);
+            _tasks.RemoveAll(dto => dto.Id == id);
         }
     }
 }

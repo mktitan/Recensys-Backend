@@ -6,13 +6,13 @@ namespace RecensysRepository.Interfaces
 {
     public interface IStageRepository : IDisposable
     {
-        IEnumerable<StageDTO> GetAll();
+        IEnumerable<StageEntity> GetAll();
 
-        void Create(StageDTO item);
+        void Create(StageEntity item);
 
-        StageDTO Read(int id);
+        StageEntity Read(int id);
 
-        void Update(StageDTO item);
+        void Update(StageEntity item);
 
         void Delete(int id);
     }

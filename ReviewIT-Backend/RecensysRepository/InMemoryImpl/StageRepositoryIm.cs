@@ -7,40 +7,40 @@ namespace RecensysRepository.InMemoryImpl
     public class StageRepositoryIm : IStageRepository
     {
 
-        private List<StageDTO> _stages = new List<StageDTO>()
+        private List<StageEntity> _stages = new List<StageEntity>()
         {
-            new StageDTO() {S_Id = 1, Name = "Stage 1", Description = "Description for stage 1", InProgress = true, Study_Id = 1, Strategy_Id = 1},
-            new StageDTO() {S_Id = 2, Name = "Stage 2", Description = "Description for stage 2", InProgress = false, Study_Id = 1, Strategy_Id = 1}
+            new StageEntity() {Id = 1, Name = "Stage 1", Description = "Description for stage 1", InProgress = true, Study_Id = 1, Strategy_Id = 1},
+            new StageEntity() {Id = 2, Name = "Stage 2", Description = "Description for stage 2", InProgress = false, Study_Id = 1, Strategy_Id = 1}
         };
 
         public void Dispose()
         {
         }
 
-        public IEnumerable<StageDTO> GetAll()
+        public IEnumerable<StageEntity> GetAll()
         {
             return _stages;
         }
 
-        public void Create(StageDTO item)
+        public void Create(StageEntity item)
         {
             _stages.Add(item);
         }
 
-        public StageDTO Read(int id)
+        public StageEntity Read(int id)
         {
-            return _stages.Find(dto => dto.S_Id == id);
+            return _stages.Find(dto => dto.Id == id);
         }
 
-        public void Update(StageDTO item)
+        public void Update(StageEntity item)
         {
-            _stages.RemoveAll(dto => dto.S_Id == item.S_Id);
+            _stages.RemoveAll(dto => dto.Id == item.Id);
             _stages.Add(item);
         }
 
         public void Delete(int id)
         {
-            _stages.RemoveAll(dto => dto.S_Id == id);
+            _stages.RemoveAll(dto => dto.Id == id);
         }
     }
 }

@@ -7,14 +7,14 @@ namespace RecensysRepository.InMemoryImpl
     public class StudyRoleRepositoryIm : IStudyRoleRepository
     {
 
-        private List<StudyRoleDTO> _roles = new List<StudyRoleDTO>()
+        private List<StudyRoleEntity> _roles = new List<StudyRoleEntity>()
         {
-            new StudyRoleDTO() {Id = 1, Name = "Admin" },
-            new StudyRoleDTO() {Id = 2, Name = "Researcher" },
-            new StudyRoleDTO() {Id = 3, Name = "Guest" },
+            new StudyRoleEntity() {Id = 1, Name = "Admin" },
+            new StudyRoleEntity() {Id = 2, Name = "Researcher" },
+            new StudyRoleEntity() {Id = 3, Name = "Guest" },
         };
 
-        public void Create(StudyRoleDTO item)
+        public void Create(StudyRoleEntity item)
         {
             _roles.Add(item);
         }
@@ -28,17 +28,17 @@ namespace RecensysRepository.InMemoryImpl
         {
         }
 
-        public IEnumerable<StudyRoleDTO> GetAll()
+        public IEnumerable<StudyRoleEntity> GetAll()
         {
             return _roles;
         }
 
-        public StudyRoleDTO Read(int id)
+        public StudyRoleEntity Read(int id)
         {
             return _roles.Find(dto => dto.Id == id);
         }
 
-        public void Update(StudyRoleDTO item)
+        public void Update(StudyRoleEntity item)
         {
             _roles.RemoveAll(dto => dto.Id == item.Id);
             _roles.Add(item);

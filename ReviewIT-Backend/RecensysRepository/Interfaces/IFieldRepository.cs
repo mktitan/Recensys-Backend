@@ -6,13 +6,13 @@ namespace RecensysRepository.Interfaces
 {
     public interface IFieldRepository : IDisposable
     {
-        IEnumerable<FieldDTO> GetAll();
+        IEnumerable<FieldEntity> GetAll();
 
-        void Create(FieldDTO item);
+        void Create(FieldEntity item);
 
-        FieldDTO Read(int id);
+        FieldEntity Read(int id);
 
-        void Update(FieldDTO item);
+        void Update(FieldEntity item);
 
         void Delete(int id);
     }

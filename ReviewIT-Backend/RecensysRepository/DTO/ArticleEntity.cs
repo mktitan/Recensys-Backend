@@ -1,10 +1,8 @@
 ﻿namespace RecensysRepository.DTO
 {
-    public class ArticleDTO
+    public class ArticleEntity
     {
-        public int A_Id { get; set; }
-        public int S_Id { get; set; }
-        public string Title { get; set; }
-        public string Author { get; set; }
+        public int Id { get; set; }
+        public int Study_Id { get; set; }
     }
 }

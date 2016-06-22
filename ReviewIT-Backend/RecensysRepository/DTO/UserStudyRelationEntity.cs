@@ -1,9 +1,9 @@
 ﻿namespace RecensysRepository.DTO
 {
-    public class UserStudyRelationDTO
+    public class UserStudyRelationEntity
     {
-        public int U_Id { get; set; }
-        public int S_Id { get; set; }
-        public int R_Id { get; set; }
+        public int Id { get; set; }
+        public int Study_Id { get; set; }
+        public int StudyRole_Id { get; set; }
     }
 }

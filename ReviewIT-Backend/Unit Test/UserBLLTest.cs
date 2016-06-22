@@ -62,9 +62,9 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new UserBLL(repo);
-            repo.GetUserRepo().Create(new UserDTO
+            repo.GetUserRepo().Create(new UserEntity
             {
-                U_Id = 10,
+                Id = 10,
                 FirstName = "Mathias",
                 LastName = "Pedersen"
             });
@@ -96,16 +96,16 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new UserBLL(repo);
-            repo.GetUserRepo().Create(new UserDTO() {});
+            repo.GetUserRepo().Create(new UserEntity() {});
 
             // Act
             bll.AssociateUserToStudy(10, 15, 5);
 
             // Assert
             var storedDto = repo.GetUserStudyRelationRepository().Read(10, 15);
-            Assert.AreEqual(storedDto.U_Id, 10);
-            Assert.AreEqual(storedDto.S_Id, 15);
-            Assert.AreEqual(storedDto.R_Id, 5);
+            Assert.AreEqual(storedDto.Id, 10);
+            Assert.AreEqual(storedDto.Study_Id, 15);
+            Assert.AreEqual(storedDto.StudyRole_Id, 5);
         }
 
         [TestMethod]
@@ -115,8 +115,8 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new UserBLL(repo);
-            repo.GetStudyRepo().Create(new StudyDTO() {S_Id = 15});
-            repo.GetStudyRoleRepository().Create(new StudyRoleDTO() {Id = 5});
+            repo.GetStudyRepo().Create(new StudyEntity() {Id = 15});
+            repo.GetStudyRoleRepository().Create(new StudyRoleEntity() {Id = 5});
 
             // Act
             bll.AssociateUserToStudy(10, 15, 5);
@@ -129,8 +129,8 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new UserBLL(repo);
-            repo.GetUserRepo().Create(new UserDTO() { U_Id = 10 });
-            repo.GetStudyRoleRepository().Create(new StudyRoleDTO() { Id = 5 });
+            repo.GetUserRepo().Create(new UserEntity() { Id = 10 });
+            repo.GetStudyRoleRepository().Create(new StudyRoleEntity() { Id = 5 });
 
             // Act
             bll.AssociateUserToStudy(10, 15, 5);
@@ -143,8 +143,8 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new UserBLL(repo);
-            repo.GetUserRepo().Create(new UserDTO() { U_Id = 10 });
-            repo.GetStudyRepo().Create(new StudyDTO() { S_Id = 15 });
+            repo.GetUserRepo().Create(new UserEntity() { Id = 10 });
+            repo.GetStudyRepo().Create(new StudyEntity() { Id = 15 });
 
             // Act
             bll.AssociateUserToStudy(10, 15, 5);
@@ -156,11 +156,11 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new UserBLL(repo);
-            repo.GetUserStudyRelationRepository().Create(new UserStudyRelationDTO
+            repo.GetUserStudyRelationRepository().Create(new UserStudyRelationEntity
             {
-                S_Id = 15,
-                R_Id = 2,
-                U_Id = 10
+                Study_Id = 15,
+                StudyRole_Id = 2,
+                Id = 10
             });
             var count = repo.GetUserStudyRelationRepository().GetAll().Count();
 

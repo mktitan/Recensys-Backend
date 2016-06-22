@@ -1,9 +1,10 @@
 ﻿namespace RecensysRepository.DTO
 {
-    public class TaskDTO
+    public class TaskEntity
     {
-        public int T_Id { get; set; }
-        public int S_Id { get; set; }
-        public int U_Id { get; set; }
+        public int Id { get; set; }
+        public int Study_Id { get; set; }
+        public int User_Id { get; set; }
+        public int TaskType_Id { get; set; }
     }
 }

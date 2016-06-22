@@ -15,7 +15,7 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new TaskBLL(repo);
-            repo.GetTaskRepo().Create(new TaskDTO()
+            repo.GetTaskRepo().Create(new TaskEntity()
             {
                 
             });

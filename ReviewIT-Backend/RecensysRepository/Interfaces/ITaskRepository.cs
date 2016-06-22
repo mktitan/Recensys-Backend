@@ -6,13 +6,13 @@ namespace RecensysRepository.Interfaces
 {
     public interface ITaskRepository : IDisposable
     {
-        IEnumerable<TaskDTO> GetAll();
+        IEnumerable<TaskEntity> GetAll();
 
-        void Create(TaskDTO item);
+        void Create(TaskEntity item);
 
-        TaskDTO Read(int id);
+        TaskEntity Read(int id);
 
-        void Update(TaskDTO item);
+        void Update(TaskEntity item);
 
         void Delete(int id);
     }

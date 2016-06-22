@@ -26,20 +26,20 @@ namespace RecensysBLL.BusinessLogicLayer
             using (var typeRepo = _factory.GetDataTypeRepository())
             using (var fieldDataRepo = _factory.GetFieldDataRepo())
             {
-                var taskDtos = taskRepo.GetAll().Where(dto => dto.U_Id == userId);
+                var taskDtos = taskRepo.GetAll().Where(dto => dto.User_Id == userId);
                 foreach (var dto in taskDtos)
                 {
-                    var task = new TaskModel() {Id = dto.T_Id, Data = new List<DataModel>()};
+                    var task = new TaskModel() {Id = dto.Id, Data = new List<DataModel>()};
 
                     // Add data to taskModel
-                    var dataEntities = fieldDataRepo.GetAll().Where(d => d.Task_Id == dto.T_Id);
+                    var dataEntities = fieldDataRepo.GetAll().Where(d => d.Task_Id == dto.Id);
                     foreach (var dataEntity in dataEntities)
                     {
                         var dataType = typeRepo.Read(dataEntity.DataType_Id);
 
                         task.Data.Add(new DataModel()
                         {
-                            Id = dataEntity.F_Id,
+                            Id = dataEntity.Id,
                             Data = dataEntity.Data,
                             ArticleId = dataEntity.Article_Id,
                             DataType = dataType.Type,
@@ -65,7 +65,7 @@ namespace RecensysBLL.BusinessLogicLayer
                     {
                         fieldDataRepo.Update(new FieldDataDTO()
                         {
-                            F_Id = data.Id,
+                            Id = data.Id,
                             Data = data.Data,
                             Field_Id = fields.Key.Id,
                             Article_Id = data.ArticleId,

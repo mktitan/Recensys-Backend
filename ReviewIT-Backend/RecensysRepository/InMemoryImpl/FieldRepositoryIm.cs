@@ -7,40 +7,40 @@ namespace RecensysRepository.InMemoryImpl
     public class FieldRepositoryIm : IFieldRepository
     {
 
-        private List<FieldDTO> _fields = new List<FieldDTO>()
+        private List<FieldEntity> _fields = new List<FieldEntity>()
         {
-            new FieldDTO() {F_Id = 1, Name = "Title", FieldType = 1},
-            new FieldDTO() {F_Id = 2, Name = "Is GSD?", FieldType = 2}
+            new FieldEntity() {Id = 1, Name = "Title", FieldType_Id = 1},
+            new FieldEntity() {Id = 2, Name = "Is GSD?", FieldType_Id = 2}
         };
 
         public void Dispose()
         {
         }
 
-        public IEnumerable<FieldDTO> GetAll()
+        public IEnumerable<FieldEntity> GetAll()
         {
             return _fields;
         }
 
-        public void Create(FieldDTO item)
+        public void Create(FieldEntity item)
         {
             _fields.Add(item);
         }
 
-        public FieldDTO Read(int id)
+        public FieldEntity Read(int id)
         {
-            return _fields.Find(dto => dto.F_Id == id);
+            return _fields.Find(dto => dto.Id == id);
         }
 
-        public void Update(FieldDTO item)
+        public void Update(FieldEntity item)
         {
-            _fields.RemoveAll(dto => dto.F_Id == item.F_Id);
+            _fields.RemoveAll(dto => dto.Id == item.Id);
             _fields.Add(item);
         }
 
         public void Delete(int id)
         {
-            _fields.RemoveAll(dto => dto.F_Id == id);
+            _fields.RemoveAll(dto => dto.Id == id);
         }
     }
 }

@@ -22,9 +22,9 @@ namespace RecensysBLL.BusinessLogicLayer
 
             using (var urepo = _factory.GetUserRepo())
             {
-                urepo.Create(new UserDTO()
+                urepo.Create(new UserEntity()
                 {
-                    U_Id = model.Id,
+                    Id = model.Id,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Metadata = model.Metadata
@@ -41,7 +41,7 @@ namespace RecensysBLL.BusinessLogicLayer
 
                 return new UserModel()
                 {
-                    Id = dto.U_Id,
+                    Id = dto.Id,
                     FirstName = dto.FirstName,
                     LastName = dto.LastName,
                     Metadata = dto.Metadata
@@ -53,11 +53,11 @@ namespace RecensysBLL.BusinessLogicLayer
         {
             using (var repo = _factory.GetUserStudyRelationRepository())
             {
-                repo.Create(new UserStudyRelationDTO()
+                repo.Create(new UserStudyRelationEntity()
                 {
-                    U_Id = userId,
-                    S_Id = studyId,
-                    R_Id = roleId
+                    Id = userId,
+                    Study_Id = studyId,
+                    StudyRole_Id = roleId
                 });
             }
         }

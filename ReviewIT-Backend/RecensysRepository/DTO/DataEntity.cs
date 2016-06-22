@@ -1,8 +1,8 @@
 ﻿namespace RecensysRepository.DTO
 {
-    public class FieldDataDTO
+    public class DataEntity
     {
-        public int F_Id { get; set; }
+        public int Id { get; set; }
         public int Field_Id { get; set; }
         public int Task_Id { get; set; }
         public int Article_Id { get; set; }

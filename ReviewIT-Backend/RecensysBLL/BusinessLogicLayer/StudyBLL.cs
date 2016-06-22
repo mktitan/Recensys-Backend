@@ -23,9 +23,9 @@ namespace RecensysBLL.BusinessLogicLayer
         {
             using (var srepo = _factory.GetStudyRepo())
             {
-                srepo.Create(new StudyDTO()
+                srepo.Create(new StudyEntity()
                 {
-                    S_Id = studyOverview.Id,
+                    Id = studyOverview.Id,
                     Name = studyOverview.Name,
                     Description = studyOverview.Description,
                 });
@@ -42,7 +42,7 @@ namespace RecensysBLL.BusinessLogicLayer
                 {
                     res.Add(new StudyOverviewModel()
                     {
-                        Id = dto.S_Id,
+                        Id = dto.Id,
                         Name = dto.Name,
                         Description = dto.Description
                     });
@@ -63,7 +63,7 @@ namespace RecensysBLL.BusinessLogicLayer
 
                 // Add basic study information
                 var studyDto = srepo.Read(id);
-                study.Id = studyDto.S_Id;
+                study.Id = studyDto.Id;
                 study.Name = studyDto.Name;
                 study.Description = studyDto.Description;
 
@@ -74,29 +74,29 @@ namespace RecensysBLL.BusinessLogicLayer
                 {
                     study.Stages.Add(new StageOverviewModel()
                     {
-                        Id = dto.S_Id,
+                        Id = dto.Id,
                         Name = dto.Name
                     });
                 }
 
                 // Add persons
-                var relationDtos = usrepo.GetAll().Where(us => us.S_Id == id);
+                var relationDtos = usrepo.GetAll().Where(us => us.Study_Id == id);
                 var userStudyRoleDictionary = new Dictionary<int, List<StudyRole>>();
                 foreach (var dto in relationDtos)
                 {
-                    if (userStudyRoleDictionary.ContainsKey(dto.U_Id))
+                    if (userStudyRoleDictionary.ContainsKey(dto.Id))
                     {
                         userStudyRoleDictionary[id].Add(new StudyRole()
                         {
-                            Id = dto.R_Id,
-                            Name = rrepo.Read(dto.R_Id).Name
+                            Id = dto.StudyRole_Id,
+                            Name = rrepo.Read(dto.StudyRole_Id).Name
                         });
                     }
                     else
                     {
-                        userStudyRoleDictionary.Add(dto.U_Id, new List<StudyRole>() { new StudyRole(){
-                            Id = dto.R_Id,
-                            Name = rrepo.Read(dto.R_Id).Name
+                        userStudyRoleDictionary.Add(dto.Id, new List<StudyRole>() { new StudyRole(){
+                            Id = dto.StudyRole_Id,
+                            Name = rrepo.Read(dto.StudyRole_Id).Name
                         }});
                     }
                 }
@@ -107,7 +107,7 @@ namespace RecensysBLL.BusinessLogicLayer
                     var userDto = urepo.Read(userPair.Key);
                     study.Persons.Add(new UserModel()
                     {
-                        Id = userDto.U_Id,
+                        Id = userDto.Id,
                         FirstName = userDto.FirstName,
                         LastName = userDto.LastName,
                         Metadata = userDto.Metadata
@@ -136,11 +136,11 @@ namespace RecensysBLL.BusinessLogicLayer
                 /*
                 srepo.Update(new StrategyDTO()
                 {
-                    S_Id = stage.Strategy.Id,
+                    Study_Id = stage.Strategy.Id,
                     Name = stage.Strategy.Name
                 });*/
 
-                repo.Create(new StageDTO()
+                repo.Create(new StageEntity()
                 {
                     Name = stage.Name,
                     Description = stage.Description

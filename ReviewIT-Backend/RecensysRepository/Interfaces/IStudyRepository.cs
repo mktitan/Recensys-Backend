@@ -6,13 +6,13 @@ namespace RecensysRepository.Interfaces
 {
     public interface IStudyRepository : IDisposable
     {
-        IEnumerable<StudyDTO> GetAll();
+        IEnumerable<StudyEntity> GetAll();
 
-        void Create(StudyDTO study);
+        void Create(StudyEntity study);
 
-        StudyDTO Read(int id);
+        StudyEntity Read(int id);
 
-        void Update(StudyDTO study);
+        void Update(StudyEntity study);
 
         void Delete(int id);
     }
