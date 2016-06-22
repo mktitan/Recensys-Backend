@@ -39,7 +39,7 @@ namespace RecensysRepository.Factory
             return _fieldRepository ?? (_fieldRepository = new FieldRepositoryIm());
         }
 
-        public IFieldDataRepository GetFieldDataRepo()
+        public IFieldDataRepository GetDataRepo()
         {
             return _fieldDataRepository ?? (_fieldDataRepository = new FieldDataRepositoryIm());
         }

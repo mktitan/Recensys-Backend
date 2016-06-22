@@ -4,7 +4,7 @@ using RecensysRepository.Interfaces;
 
 namespace RecensysRepository.InMemoryImpl
 {
-    public class FieldDataRepositoryIm : IFieldDataRepository
+    public class DataRepositoryIm : IDataRepository
     {
 
         private List<DataEntity> _fieldData = new List<DataEntity>()
