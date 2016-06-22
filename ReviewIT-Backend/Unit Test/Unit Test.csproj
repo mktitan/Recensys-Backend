@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="ModelTest.cs" />
     <Compile Include="StudyBLLTest.cs" />
+    <Compile Include="TaskBLLTest.cs" />
     <Compile Include="UserBLLTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

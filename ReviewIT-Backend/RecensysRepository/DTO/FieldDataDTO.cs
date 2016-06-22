@@ -7,5 +7,6 @@
         public int Task_Id { get; set; }
         public int Article_Id { get; set; }
         public string Data { get; set; }
+        public int DataType_Id { get; set; }
     }
 }

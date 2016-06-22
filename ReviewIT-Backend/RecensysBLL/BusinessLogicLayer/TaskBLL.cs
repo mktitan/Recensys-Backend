@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using RecensysBLL.Models;
 using RecensysBLL.Models.FullModels;
 using RecensysRepository.DTO;
@@ -19,38 +20,45 @@ namespace RecensysBLL.BusinessLogicLayer
 
         public List<TaskModel> GetTasks(int stageId, int userId)
         {
-            var taskModels = new List<TaskModel>();
+            var tasks = new List<TaskModel>();
             
-            /*
-             * TODO rewrite
             using (var taskRepo = _factory.GetTaskRepo())
-            using (var fieldRepo = _factory.GetFieldRepo())
+            using (var typeRepo = _factory.GetDataTypeRepository())
             using (var fieldDataRepo = _factory.GetFieldDataRepo())
             {
-                var tasks = taskRepo.GetAll().Where(dto => dto.U_Id == userId && dto.S_Id == stageId);
-                foreach (var task in tasks)
+                var taskDtos = taskRepo.GetAll().Where(dto => dto.U_Id == userId);
+                foreach (var dto in taskDtos)
                 {
-                    var fields = new Dictionary<FieldModel, List<DataModel>>();
+                    var task = new TaskModel() {Id = dto.T_Id, Data = new List<DataModel>()};
 
-                    var fieldData = fieldDataRepo.GetAll().Where(dto => dto.Task_Id == task.T_Id);
-                    foreach (var data in fieldData)
+                    // Add data to taskModel
+                    var dataEntities = fieldDataRepo.GetAll().Where(d => d.Task_Id == dto.T_Id);
+                    foreach (var dataEntity in dataEntities)
                     {
-                        var field = fieldRepo.Read(data.Field_Id);
-                        fields[new FieldModel() {Id = field.F_Id, FieldType = (FieldType)field.FieldType}].Add(new DataModel() {Id = data.F_Id, ArticleId = data.Article_Id, Data = data.Data});
-                        taskModels.Add(new TaskModel() {Id = task.T_Id, Fields = fields});
-                    }
-                }
-            }*/
+                        var dataType = typeRepo.Read(dataEntity.DataType_Id);
 
-            return taskModels;
+                        task.Data.Add(new DataModel()
+                        {
+                            Id = dataEntity.F_Id,
+                            Data = dataEntity.Data,
+                            ArticleId = dataEntity.Article_Id,
+                            DataType = dataType.Type,
+                            DataTypeId = dataType.Id
+                        });
+                    }
+
+                    tasks.Add(task);
+                }
+            }
+
+            return tasks;
         }
 
         public void DeliverTask(TaskModel task)
         {
             using (var fieldDataRepo = _factory.GetFieldDataRepo())
             {
-                /*
-                 * TODO rewrite
+                /* TODO correct for new model
                 foreach (var fields in task.Fields)
                 {
                     foreach (var data in fields.Value)

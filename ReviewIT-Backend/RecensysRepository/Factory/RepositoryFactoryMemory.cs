@@ -17,6 +17,7 @@ namespace RecensysRepository.Factory
         private UserStudyRelationRepositoryIm _userStudyRelationRepository;
         private StudyRoleRepositoryIm _studyRoleRepository;
         private StrategyRepositoryIm _strategyRepository;
+        private DataTypeRepositoryIm _dataTypeRepository;
 
         public IUserRepository GetUserRepo()
         {
@@ -71,6 +72,11 @@ namespace RecensysRepository.Factory
         public IStrategyRepository GetStrategyRepository()
         {
             return _strategyRepository ?? (_strategyRepository = new StrategyRepositoryIm());
+        }
+
+        public IDataTypeRepository GetDataTypeRepository()
+        {
+            return _dataTypeRepository ?? (_dataTypeRepository = new DataTypeRepositoryIm());
         }
     }
 }

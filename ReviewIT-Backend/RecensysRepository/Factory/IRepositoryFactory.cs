@@ -15,5 +15,6 @@ namespace RecensysRepository.Factory
         IUserStudyRelationRepository GetUserStudyRelationRepository();
         IStudyRoleRepository GetStudyRoleRepository();
         IStrategyRepository GetStrategyRepository();
+        IDataTypeRepository GetDataTypeRepository();
     }
 }
