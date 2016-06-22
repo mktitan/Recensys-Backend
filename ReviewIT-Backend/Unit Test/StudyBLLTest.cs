@@ -113,6 +113,107 @@ namespace Unit_Test
         }
 
         [TestMethod]
+        public void Get_NumberOfAssociations_Correct()
+        {
+            // Arrange
+            var repo = new RepositoryFactoryMemory();
+            var bll = new StudyBLL(repo);
+            repo.GetStudyRepo().Create(new StudyDTO
+            {
+                S_Id = 10,
+                Name = "name",
+                Description = "desc"
+            });
+            repo.GetUserRepo().Create(new UserDTO()
+            {
+                U_Id = 10,
+                FirstName = "Mathias",
+                LastName = "Pedersen"
+            });
+            repo.GetUserRepo().Create(new UserDTO()
+            {
+                U_Id = 11,
+                FirstName = "John",
+                LastName = "Doe"
+            });
+            repo.GetStudyRoleRepository().Create(new StudyRoleDTO() { Id = 5, Name = "RoleWithId5" });
+            repo.GetUserStudyRelationRepository().Create(new UserStudyRelationDTO()
+            {
+                S_Id = 10,
+                U_Id = 10,
+                R_Id = 5
+            });
+            repo.GetUserStudyRelationRepository().Create(new UserStudyRelationDTO()
+            {
+                S_Id = 10,
+                U_Id = 11,
+                R_Id = 5
+            });
+            var count = repo.GetUserStudyRelationRepository().GetAll().Count(r => r.S_Id == 10);
+
+
+            // Act
+            var model = bll.Get(10);
+
+            // Assert
+            Assert.AreEqual(count, model.Persons.Count);
+        }
+
+        [TestMethod]
+        public void Get_TypesOfAssociations_Correct()
+        {
+            // Arrange
+            var repo = new RepositoryFactoryMemory();
+            var bll = new StudyBLL(repo);
+            repo.GetStudyRepo().Create(new StudyDTO
+            {
+                S_Id = 10,
+                Name = "name",
+                Description = "desc"
+            });
+            repo.GetUserRepo().Create(new UserDTO()
+            {
+                U_Id = 10,
+                FirstName = "Mathias",
+                LastName = "Pedersen"
+            });
+            repo.GetUserRepo().Create(new UserDTO()
+            {
+                U_Id = 11,
+                FirstName = "John",
+                LastName = "Doe"
+            });
+            repo.GetStudyRoleRepository().Create(new StudyRoleDTO() { Id = 5, Name = "RoleWithId5" });
+            repo.GetStudyRoleRepository().Create(new StudyRoleDTO() { Id = 6, Name = "RoleWithId6" });
+            repo.GetUserStudyRelationRepository().Create(new UserStudyRelationDTO()
+            {
+                S_Id = 10,
+                U_Id = 10,
+                R_Id = 5
+            });
+            repo.GetUserStudyRelationRepository().Create(new UserStudyRelationDTO()
+            {
+                S_Id = 10,
+                U_Id = 10,
+                R_Id = 6
+            });
+            repo.GetUserStudyRelationRepository().Create(new UserStudyRelationDTO()
+            {
+                S_Id = 10,
+                U_Id = 11,
+                R_Id = 5
+            });
+
+
+            // Act
+            var model = bll.Get(10);
+
+            // Assert
+            var list = model.Persons.Where(pair => pair.Key.Id == 10).Select(pair => pair.Value).Single();
+            Assert.AreEqual(2, list.Count);
+        }
+
+        [TestMethod]
         public void Remove_GoodId_Successful()
         {
             // Arrange

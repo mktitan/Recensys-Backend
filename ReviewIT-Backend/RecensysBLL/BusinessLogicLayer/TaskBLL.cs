@@ -21,6 +21,8 @@ namespace RecensysBLL.BusinessLogicLayer
         {
             var taskModels = new List<TaskModel>();
             
+            /*
+             * TODO rewrite
             using (var taskRepo = _factory.GetTaskRepo())
             using (var fieldRepo = _factory.GetFieldRepo())
             using (var fieldDataRepo = _factory.GetFieldDataRepo())
@@ -38,7 +40,7 @@ namespace RecensysBLL.BusinessLogicLayer
                         taskModels.Add(new TaskModel() {Id = task.T_Id, Fields = fields});
                     }
                 }
-            }
+            }*/
 
             return taskModels;
         }
@@ -47,6 +49,8 @@ namespace RecensysBLL.BusinessLogicLayer
         {
             using (var fieldDataRepo = _factory.GetFieldDataRepo())
             {
+                /*
+                 * TODO rewrite
                 foreach (var fields in task.Fields)
                 {
                     foreach (var data in fields.Value)
@@ -60,7 +64,7 @@ namespace RecensysBLL.BusinessLogicLayer
                             Task_Id = task.Id
                         });
                     }
-                }
+                }*/
             }
         }
     }

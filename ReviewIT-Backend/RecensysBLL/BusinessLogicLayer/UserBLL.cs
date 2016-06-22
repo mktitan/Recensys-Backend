@@ -49,7 +49,7 @@ namespace RecensysBLL.BusinessLogicLayer
             }
         }
 
-        public void AssociateUserToStudy(int userId, int studyId, StudyRole role)
+        public void AssociateUserToStudy(int userId, int studyId, int roleId)
         {
             using (var repo = _factory.GetUserStudyRelationRepository())
             {
@@ -57,7 +57,7 @@ namespace RecensysBLL.BusinessLogicLayer
                 {
                     U_Id = userId,
                     S_Id = studyId,
-                    R_Id = (int)role
+                    R_Id = roleId
                 });
             }
         }

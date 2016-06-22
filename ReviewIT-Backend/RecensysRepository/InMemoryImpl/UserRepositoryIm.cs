@@ -14,7 +14,7 @@ namespace RecensysRepository.InMemoryImpl
         };
         private List<StudyRoleDTO> _roles = new List<StudyRoleDTO>()
         {
-            new StudyRoleDTO() {R_Id = 1, Name = "Admin" }
+            new StudyRoleDTO() {Id = 1, Name = "Admin" }
         };
         private List<UserStudyRelationDTO> _userStudyRelation = new List<UserStudyRelationDTO>()
         {

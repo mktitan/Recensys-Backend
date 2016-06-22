@@ -99,24 +99,55 @@ namespace Unit_Test
             repo.GetUserRepo().Create(new UserDTO() {});
 
             // Act
-            bll.AssociateUserToStudy(10, 15, StudyRole.Guest);
+            bll.AssociateUserToStudy(10, 15, 5);
 
             // Assert
             var storedDto = repo.GetUserStudyRelationRepository().Read(10, 15);
             Assert.AreEqual(storedDto.U_Id, 10);
             Assert.AreEqual(storedDto.S_Id, 15);
-            Assert.AreEqual(storedDto.R_Id, (int) StudyRole.Guest);
+            Assert.AreEqual(storedDto.R_Id, 5);
         }
 
         [TestMethod]
-        public void AssociateUserTostudy_NonexistentIds_ThrowArgumentOutOfBoundsException()
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void AssociateUserTostudy_NonexistantUserId_ThrowArgumentOutOfRangeException()
         {
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new UserBLL(repo);
+            repo.GetStudyRepo().Create(new StudyDTO() {S_Id = 15});
+            repo.GetStudyRoleRepository().Create(new StudyRoleDTO() {Id = 5});
 
             // Act
-            bll.AssociateUserToStudy(10, 15, StudyRole.Guest);
+            bll.AssociateUserToStudy(10, 15, 5);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void AssociateUserTostudy_NonexistantStudyId_ThrowArgumentOutOfRangeException()
+        {
+            // Arrange
+            var repo = new RepositoryFactoryMemory();
+            var bll = new UserBLL(repo);
+            repo.GetUserRepo().Create(new UserDTO() { U_Id = 10 });
+            repo.GetStudyRoleRepository().Create(new StudyRoleDTO() { Id = 5 });
+
+            // Act
+            bll.AssociateUserToStudy(10, 15, 5);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void AssociateUserTostudy_NonexistantRoleId_ThrowArgumentOutOfRangeException()
+        {
+            // Arrange
+            var repo = new RepositoryFactoryMemory();
+            var bll = new UserBLL(repo);
+            repo.GetUserRepo().Create(new UserDTO() { U_Id = 10 });
+            repo.GetStudyRepo().Create(new StudyDTO() { S_Id = 15 });
+
+            // Act
+            bll.AssociateUserToStudy(10, 15, 5);
         }
 
         [TestMethod]

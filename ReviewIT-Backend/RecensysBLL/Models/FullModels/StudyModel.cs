@@ -3,9 +3,10 @@ using RecensysBLL.Models.OverviewModels;
 
 namespace RecensysBLL.Models.FullModels
 {
-    public enum StudyRole
+    public class StudyRole
     {
-        Admin, User, Guest
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 
     public class StudyModel
