@@ -1,7 +1,7 @@
 ﻿using System;
 using RecensysBLL.Models;
 using RecensysBLL.Models.FullModels;
-using RecensysRepository.DTO;
+using RecensysRepository.Entities;
 using RecensysRepository.Factory;
 
 namespace RecensysBLL.BusinessLogicLayer
@@ -51,7 +51,7 @@ namespace RecensysBLL.BusinessLogicLayer
 
         public void AssociateUserToStudy(int userId, int studyId, int roleId)
         {
-            using (var repo = _factory.GetUserStudyRelationRepository())
+            using (var repo = _factory.GetUserStudyRelationRepo())
             {
                 repo.Create(new UserStudyRelationEntity()
                 {
@@ -64,7 +64,7 @@ namespace RecensysBLL.BusinessLogicLayer
 
         public void UnassociateUserToStudy(int userId, int studyId)
         {
-            using (var repo = _factory.GetUserStudyRelationRepository())
+            using (var repo = _factory.GetUserStudyRelationRepo())
             {
                 repo.Delete(userId, studyId);
             }

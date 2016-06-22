@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using RecensysRepository.DTO;
+using RecensysRepository.Entities;
 using RecensysRepository.Interfaces;
 
 namespace RecensysRepository.InMemoryImpl

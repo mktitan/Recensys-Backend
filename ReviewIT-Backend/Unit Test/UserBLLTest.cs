@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RecensysBLL.BusinessLogicLayer;
 using RecensysBLL.Models;
 using RecensysBLL.Models.FullModels;
-using RecensysRepository.DTO;
+using RecensysRepository.Entities;
 using RecensysRepository.Factory;
 
 namespace Unit_Test
@@ -102,7 +102,7 @@ namespace Unit_Test
             bll.AssociateUserToStudy(10, 15, 5);
 
             // Assert
-            var storedDto = repo.GetUserStudyRelationRepository().Read(10, 15);
+            var storedDto = repo.GetUserStudyRelationRepo().Read(10, 15);
             Assert.AreEqual(storedDto.Id, 10);
             Assert.AreEqual(storedDto.Study_Id, 15);
             Assert.AreEqual(storedDto.StudyRole_Id, 5);
@@ -116,7 +116,7 @@ namespace Unit_Test
             var repo = new RepositoryFactoryMemory();
             var bll = new UserBLL(repo);
             repo.GetStudyRepo().Create(new StudyEntity() {Id = 15});
-            repo.GetStudyRoleRepository().Create(new StudyRoleEntity() {Id = 5});
+            repo.GetStudyRoleRepo().Create(new StudyRoleEntity() {Id = 5});
 
             // Act
             bll.AssociateUserToStudy(10, 15, 5);
@@ -130,7 +130,7 @@ namespace Unit_Test
             var repo = new RepositoryFactoryMemory();
             var bll = new UserBLL(repo);
             repo.GetUserRepo().Create(new UserEntity() { Id = 10 });
-            repo.GetStudyRoleRepository().Create(new StudyRoleEntity() { Id = 5 });
+            repo.GetStudyRoleRepo().Create(new StudyRoleEntity() { Id = 5 });
 
             // Act
             bll.AssociateUserToStudy(10, 15, 5);
@@ -156,19 +156,19 @@ namespace Unit_Test
             // Arrange
             var repo = new RepositoryFactoryMemory();
             var bll = new UserBLL(repo);
-            repo.GetUserStudyRelationRepository().Create(new UserStudyRelationEntity
+            repo.GetUserStudyRelationRepo().Create(new UserStudyRelationEntity
             {
                 Study_Id = 15,
                 StudyRole_Id = 2,
                 Id = 10
             });
-            var count = repo.GetUserStudyRelationRepository().GetAll().Count();
+            var count = repo.GetUserStudyRelationRepo().GetAll().Count();
 
             // Act
             bll.UnassociateUserToStudy(10, 15);
 
             // Assert
-            Assert.AreEqual(count - 1, repo.GetUserStudyRelationRepository().GetAll().Count());
+            Assert.AreEqual(count - 1, repo.GetUserStudyRelationRepo().GetAll().Count());
         }
 
         

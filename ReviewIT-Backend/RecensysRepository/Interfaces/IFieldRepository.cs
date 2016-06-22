@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using RecensysRepository.DTO;
+using RecensysRepository.Entities;
 
 namespace RecensysRepository.Interfaces
 {

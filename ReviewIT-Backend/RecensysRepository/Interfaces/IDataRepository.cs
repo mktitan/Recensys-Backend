@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using RecensysRepository.DTO;
+using RecensysRepository.Entities;
 
 namespace RecensysRepository.Interfaces
 {
-    public interface IFieldDataRepository : IDisposable
+    public interface IDataRepository : IDisposable
     {
         IEnumerable<DataEntity> GetAll();
 

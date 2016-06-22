@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RecensysBLL.BusinessLogicLayer;
-using RecensysRepository.DTO;
+using RecensysRepository.Entities;
 using RecensysRepository.Factory;
 
 namespace Unit_Test

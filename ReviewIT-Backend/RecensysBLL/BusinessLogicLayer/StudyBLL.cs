@@ -4,7 +4,7 @@ using Microsoft.Win32;
 using RecensysBLL.Models;
 using RecensysBLL.Models.FullModels;
 using RecensysBLL.Models.OverviewModels;
-using RecensysRepository.DTO;
+using RecensysRepository.Entities;
 using RecensysRepository.Factory;
 
 namespace RecensysBLL.BusinessLogicLayer
@@ -55,9 +55,9 @@ namespace RecensysBLL.BusinessLogicLayer
         {
             using (var srepo = _factory.GetStudyRepo())
             using (var strepo = _factory.GetStageRepo())
-            using (var usrepo = _factory.GetUserStudyRelationRepository())
+            using (var usrepo = _factory.GetUserStudyRelationRepo())
             using (var urepo = _factory.GetUserRepo())
-            using (var rrepo = _factory.GetStudyRoleRepository())
+            using (var rrepo = _factory.GetStudyRoleRepo())
             {
                 var study = new StudyModel();
 
@@ -131,7 +131,7 @@ namespace RecensysBLL.BusinessLogicLayer
         public void AddStage(StageModel stage)
         {
             using (var repo = _factory.GetStageRepo())
-            using (var srepo = _factory.GetStrategyRepository())
+            using (var srepo = _factory.GetStrategyRepo())
             {
                 /*
                 srepo.Update(new StrategyDTO()

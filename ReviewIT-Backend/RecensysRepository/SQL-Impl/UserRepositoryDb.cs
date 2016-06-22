@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using RecensysRepository.DTO;
+using RecensysRepository.Entities;
 using RecensysRepository.Interfaces;
 
 namespace RecensysRepository

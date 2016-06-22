@@ -10,7 +10,7 @@ namespace RecensysRepository.Factory
         private StudyRepositoryIm _studyRepository;
         private StageRepositoryIm _stageRepository;
         private FieldRepositoryIm _fieldRepository;
-        private FieldDataRepositoryIm _fieldDataRepository;
+        private DataRepositoryIm _fieldDataRepository;
         private TaskRepositoryIm _taskRepository;
         private ArticleRepositoryIm _articleRepository;
         private CredentialsRepositoryIm _credentialsRepository;
@@ -39,9 +39,9 @@ namespace RecensysRepository.Factory
             return _fieldRepository ?? (_fieldRepository = new FieldRepositoryIm());
         }
 
-        public IFieldDataRepository GetDataRepo()
+        public IDataRepository GetDataRepo()
         {
-            return _fieldDataRepository ?? (_fieldDataRepository = new FieldDataRepositoryIm());
+            return _fieldDataRepository ?? (_fieldDataRepository = new DataRepositoryIm());
         }
 
         public ITaskRepository GetTaskRepo()
@@ -59,22 +59,22 @@ namespace RecensysRepository.Factory
             return _credentialsRepository ?? (_credentialsRepository = new CredentialsRepositoryIm());
         }
 
-        public IUserStudyRelationRepository GetUserStudyRelationRepository()
+        public IUserStudyRelationRepository GetUserStudyRelationRepo()
         {
             return _userStudyRelationRepository ?? (_userStudyRelationRepository = new UserStudyRelationRepositoryIm());
         }
 
-        public IStudyRoleRepository GetStudyRoleRepository()
+        public IStudyRoleRepository GetStudyRoleRepo()
         {
             return _studyRoleRepository ?? (_studyRoleRepository = new StudyRoleRepositoryIm());
         }
 
-        public IStrategyRepository GetStrategyRepository()
+        public IStrategyRepository GetStrategyRepo()
         {
             return _strategyRepository ?? (_strategyRepository = new StrategyRepositoryIm());
         }
 
-        public IDataTypeRepository GetDataTypeRepository()
+        public IDataTypeRepository GetDataTypeRepo()
         {
             return _dataTypeRepository ?? (_dataTypeRepository = new DataTypeRepositoryIm());
         }

@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RecensysBLL.BusinessLogicLayer;
 using RecensysBLL.Models.OverviewModels;
-using RecensysRepository.DTO;
+using RecensysRepository.Entities;
 using RecensysRepository.Factory;
 
 namespace Unit_Test
@@ -136,20 +136,20 @@ namespace Unit_Test
                 FirstName = "John",
                 LastName = "Doe"
             });
-            repo.GetStudyRoleRepository().Create(new StudyRoleEntity() { Id = 5, Name = "RoleWithId5" });
-            repo.GetUserStudyRelationRepository().Create(new UserStudyRelationEntity()
+            repo.GetStudyRoleRepo().Create(new StudyRoleEntity() { Id = 5, Name = "RoleWithId5" });
+            repo.GetUserStudyRelationRepo().Create(new UserStudyRelationEntity()
             {
                 Study_Id = 10,
                 Id = 10,
                 StudyRole_Id = 5
             });
-            repo.GetUserStudyRelationRepository().Create(new UserStudyRelationEntity()
+            repo.GetUserStudyRelationRepo().Create(new UserStudyRelationEntity()
             {
                 Study_Id = 10,
                 Id = 11,
                 StudyRole_Id = 5
             });
-            var count = repo.GetUserStudyRelationRepository().GetAll().Count(r => r.Study_Id == 10);
+            var count = repo.GetUserStudyRelationRepo().GetAll().Count(r => r.Study_Id == 10);
 
 
             // Act
@@ -183,21 +183,21 @@ namespace Unit_Test
                 FirstName = "John",
                 LastName = "Doe"
             });
-            repo.GetStudyRoleRepository().Create(new StudyRoleEntity() { Id = 5, Name = "RoleWithId5" });
-            repo.GetStudyRoleRepository().Create(new StudyRoleEntity() { Id = 6, Name = "RoleWithId6" });
-            repo.GetUserStudyRelationRepository().Create(new UserStudyRelationEntity()
+            repo.GetStudyRoleRepo().Create(new StudyRoleEntity() { Id = 5, Name = "RoleWithId5" });
+            repo.GetStudyRoleRepo().Create(new StudyRoleEntity() { Id = 6, Name = "RoleWithId6" });
+            repo.GetUserStudyRelationRepo().Create(new UserStudyRelationEntity()
             {
                 Study_Id = 10,
                 Id = 10,
                 StudyRole_Id = 5
             });
-            repo.GetUserStudyRelationRepository().Create(new UserStudyRelationEntity()
+            repo.GetUserStudyRelationRepo().Create(new UserStudyRelationEntity()
             {
                 Study_Id = 10,
                 Id = 10,
                 StudyRole_Id = 6
             });
-            repo.GetUserStudyRelationRepository().Create(new UserStudyRelationEntity()
+            repo.GetUserStudyRelationRepo().Create(new UserStudyRelationEntity()
             {
                 Study_Id = 10,
                 Id = 11,

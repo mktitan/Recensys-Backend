@@ -3,7 +3,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using RecensysBLL.Models;
 using RecensysBLL.Models.FullModels;
-using RecensysRepository.DTO;
+using RecensysRepository.Entities;
 using RecensysRepository.Factory;
 
 namespace RecensysBLL.BusinessLogicLayer
@@ -23,8 +23,8 @@ namespace RecensysBLL.BusinessLogicLayer
             var tasks = new List<TaskModel>();
             
             using (var taskRepo = _factory.GetTaskRepo())
-            using (var typeRepo = _factory.GetDataTypeRepository())
-            using (var fieldDataRepo = _factory.GetFieldDataRepo())
+            using (var typeRepo = _factory.GetDataTypeRepo())
+            using (var fieldDataRepo = _factory.GetDataRepo())
             {
                 var taskDtos = taskRepo.GetAll().Where(dto => dto.User_Id == userId);
                 foreach (var dto in taskDtos)
@@ -56,7 +56,7 @@ namespace RecensysBLL.BusinessLogicLayer
 
         public void DeliverTask(TaskModel task)
         {
-            using (var fieldDataRepo = _factory.GetFieldDataRepo())
+            using (var dataRepo = _factory.GetDataRepo())
             {
                 /* TODO correct for new model
                 foreach (var fields in task.Fields)
@@ -73,6 +73,19 @@ namespace RecensysBLL.BusinessLogicLayer
                         });
                     }
                 }*/
+
+                foreach (var data in task.Data)
+                {
+                    dataRepo.Update(new DataEntity()
+                    {
+                        Id = data.Id,
+                        Data = data.Data,
+                        DataType_Id = data.DataTypeId,
+                        Task_Id = task.Id,
+                        Article_Id = data.ArticleId,
+                        Field_Id = data.
+                    });
+                }
             }
         }
     }
