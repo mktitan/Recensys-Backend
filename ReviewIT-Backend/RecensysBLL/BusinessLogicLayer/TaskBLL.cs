@@ -58,22 +58,9 @@ namespace RecensysBLL.BusinessLogicLayer
         {
             using (var dataRepo = _factory.GetDataRepo())
             {
-                /* TODO correct for new model
-                foreach (var fields in task.Fields)
-                {
-                    foreach (var data in fields.Value)
-                    {
-                        fieldDataRepo.Update(new FieldDataDTO()
-                        {
-                            Id = data.Id,
-                            Data = data.Data,
-                            Field_Id = fields.Key.Id,
-                            Article_Id = data.ArticleId,
-                            Task_Id = task.Id
-                        });
-                    }
-                }*/
-
+                /* TODO figure out how to return. Either data has connection to field or 
+                 * data is stored in dictionary under fields
+                
                 foreach (var data in task.Data)
                 {
                     dataRepo.Update(new DataEntity()
@@ -85,7 +72,7 @@ namespace RecensysBLL.BusinessLogicLayer
                         Article_Id = data.ArticleId,
                         Field_Id = data.
                     });
-                }
+                }*/
             }
         }
     }
